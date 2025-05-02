@@ -26,7 +26,7 @@ export interface ResumeEditorRef {
   save: () => Promise<void>;
 }
 
-type TemplateType = "single" | "double" | "colored" | "singleColored";
+type TemplateType = "single" | "double" | "colored" | "singleColored" | "minimalist" | "modern";
 
 // Internal component that has access to ResumeProvider context
 function ResumeEditorInternal({

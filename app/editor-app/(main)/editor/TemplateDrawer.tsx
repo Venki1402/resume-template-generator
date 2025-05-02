@@ -10,9 +10,21 @@ import { LayoutTemplate, LayoutGrid, Palette } from "lucide-react";
 import { useState } from "react";
 
 interface TemplateDrawerProps {
-  currentTemplate: "single" | "double" | "colored" | "singleColored";
+  currentTemplate:
+    | "single"
+    | "double"
+    | "colored"
+    | "singleColored"
+    | "minimalist"
+    | "modern";
   onTemplateChange: (
-    template: "single" | "double" | "colored" | "singleColored"
+    template:
+      | "single"
+      | "double"
+      | "colored"
+      | "singleColored"
+      | "minimalist"
+      | "modern"
   ) => void;
 }
 
@@ -23,7 +35,13 @@ export default function TemplateDrawer({
   const [open, setOpen] = useState(false);
 
   const handleTemplateChange = (
-    template: "single" | "double" | "colored" | "singleColored"
+    template:
+      | "single"
+      | "double"
+      | "colored"
+      | "singleColored"
+      | "minimalist"
+      | "modern"
   ) => {
     onTemplateChange(template);
     setOpen(false);
@@ -57,6 +75,19 @@ export default function TemplateDrawer({
           title: "Single Column Colored",
           description: "Single-column layout with a vibrant colored theme",
         };
+      case "minimalist":
+        return {
+          icon: <LayoutTemplate className="h-5 w-5" />,
+          title: "Minimalist",
+          description: "A clean, minimalist design",
+        };
+      case "modern":
+        return {
+          icon: <LayoutTemplate className="h-5 w-5" />,
+          title: "Modern",
+          description: "A modern design with visual elements",
+        };
+
       default:
         return {
           icon: <LayoutTemplate className="h-5 w-5" />,
@@ -79,14 +110,20 @@ export default function TemplateDrawer({
         </Button>
       </DrawerTrigger>
 
-      
       <DrawerContent>
         <DrawerHeader>
           <DrawerTitle>Choose Template</DrawerTitle>
         </DrawerHeader>
         <div className="flex-1 overflow-y-auto p-4">
           <div className="space-y-4">
-            {["single", "double", "colored", "singleColored"].map((type) => {
+            {[
+              "single",
+              "double",
+              "colored",
+              "singleColored",
+              "minimalist",
+              "modern",
+            ].map((type) => {
               const { icon, title, description } = getTemplateDetails(type);
               return (
                 <div
